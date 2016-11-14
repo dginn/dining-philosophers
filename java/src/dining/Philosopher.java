@@ -3,7 +3,7 @@ package dining;
 public class Philosopher extends Thread {
 	private int id = 0;
 	private Chopstick[] chopsticks;
-	
+	//new comment
 	// Constructs a Philosopher Thread with specified id
 	// We pass the constructor an array of the Chopstick
 	// objects on the table so that it can pick them up
