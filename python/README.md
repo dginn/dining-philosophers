@@ -1,0 +1,2 @@
+# python
+This is the home of our python solution to the Dining Philosopher's problem. It uses the Resource Hierarchy solution as suggested by Djikstra, which can be found on the [Wikipedia page](https://en.wikipedia.org/wiki/Dining_philosophers_problem) describing the problem.
