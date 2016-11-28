@@ -1,22 +1,12 @@
 package dining;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Chopstick {
-	// Tells whether the chopstick is locked or not
-	private boolean lock;
 	
-	public Chopstick() {
-		this.lock = false;
+	    public static final int ON_TABLE = -1;
+	    static int instances = 0;
+	    public int id;
+	    //AtomicInteger used increment through threads
+	    public AtomicInteger holder = new AtomicInteger(ON_TABLE);
+	    Chopstick() { id = instances++; }
 	}
-	
-	// This function should handle locking the 
-	// Chopstick while it is picked up
-	public boolean pickup() {
-		return false;
-	}
-	
-	// This function should handle unlocking the
-	// Chopstick when it is put down
-	public void putdown() {
-		
-	}
-}
