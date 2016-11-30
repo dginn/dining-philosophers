@@ -10,10 +10,10 @@ class Philosopher implements Runnable {
     static Random rand = new Random();
     AtomicBoolean end = new AtomicBoolean(false);
     int id;
-    PhilosopherState state = PhilosopherState.Grab;
+    PhilosopherState state = PhilosopherState.Grab;//state whether philosopher decides so grab
     Chopstick left;
     Chopstick right;
-    int timesEaten = 0;
+    int timesEaten = 0;//times eaten by each philospoher, increments every time they eat
  
     Philosopher() {
         id = instances++;
@@ -24,10 +24,10 @@ class Philosopher implements Runnable {
     void sleep() { try { Thread.sleep(rand.nextInt(maxWaitMs)); }
         catch (InterruptedException ex) {} }
  
-    void waitForFork(Chopstick chopstick) {
+    void waitForChopstick(Chopstick chopstick) {
         do {
             if (chopstick.holder.get() == Chopstick.ON_TABLE) {
-            	chopstick.holder.set(id);                //  my id shows I hold it
+            	chopstick.holder.set(id);                //  holding the chopstick
                 return;
             } else {                                //  someone still holds it
                 sleep();                            //  check again later
@@ -41,15 +41,15 @@ class Philosopher implements Runnable {
                 state = PhilosopherState.Grab;       // grab chopsticks
             } else { // ==PhilosopherState.Get
                 if (token.get() == id) {            //  token availability
-                    waitForFork(left);
-                    waitForFork(right);             
+                    waitForChopstick(left);
+                    waitForChopstick(right);             
                     token.set((id+2)% test.philosopherCount);
-                    state = PhilosopherState.Eats;
+                    state = PhilosopherState.Eats;//changes the state to eat
                     timesEaten++;
                     sleep();                          
                     left.holder.set(Chopstick.ON_TABLE);
                     right.holder.set(Chopstick.ON_TABLE);
-                    state = PhilosopherState.Thnk;  
+                    state = PhilosopherState.Thnk;  //changes the state to think
                     sleep();
                 } else {                    //  token.get() != id, so not my turn
                     sleep();
