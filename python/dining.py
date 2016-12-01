@@ -30,8 +30,11 @@ class Philosopher(threading.Thread):
 		# thinking an arbitrary amount of time
 		while True:
 			# Think for some amount of time
-			# between 0 and 60 seconds
-			time.sleep(randint(0, 1))
+			# between 0 and 15 seconds
+			thinkingTime = randint(0, 15)
+			time.sleep(thinkingTime)
+			print "Philosopher {} finished thinking after {} second(s).".format(
+				self.id, thinkingTime)
 
 			# Attempt to eat
 			# Keep track of how long the Philosopher waits
