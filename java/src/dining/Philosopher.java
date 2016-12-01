@@ -17,8 +17,8 @@ class Philosopher implements Runnable {
  
     Philosopher() {
         id = instances++;
-        left = test.chopsticks.get(id);
-        right = test.chopsticks.get((id+1)%test.philosopherCount);
+        left = Main.chopsticks.get(id);
+        right = Main.chopsticks.get((id+1)%Main.philosopherCount);
     }
  
     void sleep() { try { Thread.sleep(rand.nextInt(maxWaitMs)); }
@@ -43,7 +43,7 @@ class Philosopher implements Runnable {
                 if (token.get() == id) {            //  token availability
                     waitForChopstick(left);
                     waitForChopstick(right);             
-                    token.set((id+2)% test.philosopherCount);
+                    token.set((id+2)% Main.philosopherCount);
                     state = PhilosopherState.Eats;//changes the state to eat
                     timesEaten++;
                     sleep();                          

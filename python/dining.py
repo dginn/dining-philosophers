@@ -33,7 +33,7 @@ class Philosopher(threading.Thread):
 			# between 0 and 15 seconds
 			thinkingTime = randint(0, 15)
 			time.sleep(thinkingTime)
-			print "Philosopher {} finished thinking after {} second(s).".format(
+			print "Philosopher {} finished thinking after {} second(s) and now wants to eat.".format(
 				self.id, thinkingTime)
 
 			# Attempt to eat

@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 enum PhilosopherState { Grab , Eats , Thnk }
 
-public class main {
+public class Main {
     static final int philosopherCount = 5; //  5 philosophers
     static final int runSeconds = 10; //runtime in seconds
     //ArrayList used to hold chopstick availability 
@@ -54,3 +54,4 @@ public class main {
             System.out.printf("Philosopher %2d: ate %,d times, %,d/sec\n",
                 p.id+1, p.timesEaten, p.timesEaten/runSeconds);
     }
+}
